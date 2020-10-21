@@ -25,9 +25,10 @@ function createFeatures(earthquakeData) {
   // Define a function we want to run once for each feature in the features array
   // Give each feature a popup describing the place and time of the earthquake
   function onEachFeature(feature, layer) {
-    layer.bindPopup("<h3>Location:  " + feature.properties.place +
+    layer.bindPopup("<h3>Location:  " + feature.properties.place + 
       "</h3><hr><p>" + new Date(feature.properties.time) + "</p>" +
-        "<hr><p>Depth:   " + (feature.geometry.coordinates[2]) + " km</p>");
+        "<hr><p>Depth:   " + (feature.geometry.coordinates[2]) + " km</p>" +
+        "<hr><p>Magnatude:   " + (feature.properties.mag) + "</p>");
   }
 
   
@@ -64,7 +65,7 @@ function createMap(earthquakes, mags) {
     tileSize: 512,
     maxZoom: 18,
     zoomOffset: -1,
-    id: "mapbox/streets-v11",
+    id: "mapbox/outdoors-v11",
     accessToken: API_KEY
   });
 
@@ -102,7 +103,7 @@ function createMap(earthquakes, mags) {
     collapsed: false
   }).addTo(myMap);
 
-//Add a legend
+//Add a legend, used code from leaflet choropleth tutorial
 let legend = L.control({
   position: 'bottomright'
 });
@@ -128,6 +129,4 @@ legend.onAdd = function () {
 };
 
 legend.addTo(myMap);
-
-
 }
