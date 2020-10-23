@@ -25,10 +25,10 @@ function createFeatures(earthquakeData) {
   // Define a function we want to run once for each feature in the features array
   // Give each feature a popup describing the place and time of the earthquake
   function onEachFeature(feature, layer) {
-    layer.bindPopup("<h3>Location:  " + feature.properties.place + 
+    layer.bindPopup("<h3>Location: " + feature.properties.place + 
       "</h3><hr><p>" + new Date(feature.properties.time) + "</p>" +
-        "<hr><p>Depth:   " + (feature.geometry.coordinates[2]) + " km</p>" +
-        "<hr><p>Magnatude:   " + (feature.properties.mag) + "</p>");
+        "<hr><p>Depth: " + (feature.geometry.coordinates[2]) + " km</p>" +
+        "<hr><p>Magnitude: " + (feature.properties.mag) + "</p>");
   }
 
   
@@ -111,7 +111,7 @@ let legend = L.control({
 legend.onAdd = function () {
 
   let div = L.DomUtil.create('div', 'info legend'),
-    grades = [0-9 , 10, 30, 50, 70, 90, 110, 700],
+    grades = [-9, 10, 30, 50, 70, 90, 110, 700],
     labels = [],
     from, to;
 
